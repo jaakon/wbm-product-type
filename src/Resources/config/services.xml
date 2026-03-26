@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- Entity Definition -->
+        <service id="Wbm\ProductType\ProductTypeData\WbmProductTypeDataDefinition">
+            <tag name="shopware.entity.definition" entity="wbm_product_type_data"/>
+        </service>
+
+        <!-- Product Entity Extension -->
+        <service id="Wbm\ProductType\Extension\ProductExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
+        <!-- Storefront Listing Filter Handler -->
+        <service id="Wbm\ProductType\Storefront\ProductTypeListingFilterHandler">
+            <tag name="shopware.listing.filter.handler"/>
+        </service>
+
+        <!-- Elasticsearch: Decorate Product Definition for mapping & fetch -->
+        <service id="Wbm\ProductType\Elasticsearch\WbmElasticsearchProductDefinitionDecorator"
+                 decorates="Shopware\Elasticsearch\Product\ElasticsearchProductDefinition">
+            <argument type="service" id="Wbm\ProductType\Elasticsearch\WbmElasticsearchProductDefinitionDecorator.inner"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+        </service>
+
+        <!-- Elasticsearch: Decorate Admin Product Search Indexer -->
+        <service id="Wbm\ProductType\Elasticsearch\WbmProductAdminSearchIndexerDecorator"
+                 decorates="Shopware\Elasticsearch\Admin\Indexer\ProductAdminSearchIndexer">
+            <argument type="service" id="Wbm\ProductType\Elasticsearch\WbmProductAdminSearchIndexerDecorator.inner"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+        </service>
+    </services>
+</container>

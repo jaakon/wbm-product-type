@@ -1,0 +1,28 @@
+{% sw_extends '@Storefront/storefront/component/listing/filter-panel.html.twig' %}
+
+{% block component_filter_panel_items %}
+    {{ parent() }}
+
+    {% block component_filter_panel_item_product_type %}
+        {% set productTypeAggregation = listing.aggregations.get('product-type') %}
+
+        {% if productTypeAggregation and productTypeAggregation.buckets is not empty %}
+            {% set productTypes = [] %}
+            {% for bucket in productTypeAggregation.buckets %}
+                {% if bucket.key is not empty %}
+                    {% set productTypes = productTypes|merge([{ id: bucket.key, translated: { name: bucket.key } }]) %}
+                {% endif %}
+            {% endfor %}
+
+            {% if productTypes is not empty %}
+                {% sw_include '@Storefront/storefront/component/listing/filter/filter-multi-select.html.twig' with {
+                    elements: productTypes,
+                    sidebar: sidebar,
+                    name: 'product-type',
+                    displayName: 'wbm-product-type.filter.displayName'|trans|sw_sanitize,
+                    ariaLabel: 'wbm-product-type.filter.ariaLabel'|trans|sw_sanitize
+                } %}
+            {% endif %}
+        {% endif %}
+    {% endblock %}
+{% endblock %}

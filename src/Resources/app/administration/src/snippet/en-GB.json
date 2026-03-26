@@ -1,0 +1,14 @@
+{
+    "wbm-product-type": {
+        "specifications": {
+            "cardTitle": "Product Type Data (API)",
+            "labelProductIdFromApi": "Product ID (API)",
+            "labelProductType": "Product type",
+            "placeholderProductType": "e.g. Books, CD-ROMs, DVD-ROMs, Magazines"
+        },
+        "list": {
+            "columnProductType": "Product type",
+            "filterProductType": "Product type"
+        }
+    }
+}

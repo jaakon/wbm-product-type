@@ -1,0 +1,25 @@
+{% block sw_product_detail_specifications_measurement %}
+    <mt-card
+        class="sw-product-detail-specification__wbm-product-type"
+        position-identifier="sw-product-detail-specifications-wbm-product-type"
+        :title="$tc('wbm-product-type.specifications.cardTitle')"
+        :is-loading="isLoading"
+    >
+        <sw-container columns="repeat(auto-fit, minmax(250px, 1fr))" gap="0px 30px">
+            <mt-text-field
+                :label="$tc('wbm-product-type.specifications.labelProductIdFromApi')"
+                :model-value="wbmProductIdFromApi"
+                :disabled="true"
+            />
+
+            <mt-text-field
+                :label="$tc('wbm-product-type.specifications.labelProductType')"
+                :placeholder="$tc('wbm-product-type.specifications.placeholderProductType')"
+                :model-value="wbmProductType"
+                @update:model-value="onWbmProductTypeInput"
+            />
+        </sw-container>
+    </mt-card>
+
+    {% parent %}
+{% endblock %}

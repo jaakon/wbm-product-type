@@ -1,0 +1,8 @@
+{
+    "wbm-product-type": {
+        "filter": {
+            "displayName": "Produkttyp",
+            "ariaLabel": "Nach Produkttyp filtern"
+        }
+    }
+}

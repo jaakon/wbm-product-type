@@ -1,0 +1,34 @@
+{
+    "name": "wbm/product-type",
+    "description": "Extends products with external API product type data, including Elasticsearch-integrated filtering and search for both Admin and Storefront.",
+    "version": "1.0.0",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Seidel",
+            "email": "mvs@albami.de"
+        }
+    ],
+    "require": {
+        "shopware/core": "~6.7",
+        "shopware/storefront": "~6.7",
+        "shopware/elasticsearch": "~6.7"
+    },
+    "extra": {
+        "shopware-plugin-class": "Wbm\\ProductType\\WbmProductType",
+        "label": {
+            "de-DE": "WBM Produkttyp",
+            "en-GB": "WBM Product Type"
+        },
+        "description": {
+            "de-DE": "Erweitert Produkte um externe API-Produkttypdaten mit Elasticsearch-integrierter Filterung und Suche.",
+            "en-GB": "Extends products with external API product type data, including Elasticsearch-integrated filtering and search."
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Wbm\\ProductType\\": "src/"
+        }
+    }
+}
